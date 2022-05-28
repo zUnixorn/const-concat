@@ -1,10 +1,3 @@
-#![feature(
-    const_fn,
-    const_fn_union,
-    untagged_unions,
-    const_raw_ptr_deref
-)]
-
 pub const unsafe fn transmute<From, To>(from: From) -> To {
     union Transmute<From, To> {
         from: std::mem::ManuallyDrop<From>,
