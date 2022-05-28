@@ -9,9 +9,9 @@ pub const unsafe fn transmute<From, To>(from: From) -> To {
 
 pub const unsafe fn concat<First, Second, Out>(a: &[u8], b: &[u8]) -> Out
 where
-    First: Copy,
-    Second: Copy,
-    Out: Copy,
+    First: Copy + Sized,
+    Second: Copy + Sized,
+    Out: Copy + Sized,
 {
     #[repr(C)]
     #[derive(Copy, Clone)]
