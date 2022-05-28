@@ -1,3 +1,5 @@
+#![feature(const_fn_trait_bound)]
+
 pub const unsafe fn transmute<From, To>(from: From) -> To {
     union Transmute<From, To> {
         from: std::mem::ManuallyDrop<From>,
@@ -9,9 +11,9 @@ pub const unsafe fn transmute<From, To>(from: From) -> To {
 
 pub const unsafe fn concat<First, Second, Out>(a: &[u8], b: &[u8]) -> Out
 where
-    First: Copy + Sized,
-    Second: Copy + Sized,
-    Out: Copy + Sized,
+    First: Copy,
+    Second: Copy,
+    Out: Copy,
 {
     #[repr(C)]
     #[derive(Copy, Clone)]
